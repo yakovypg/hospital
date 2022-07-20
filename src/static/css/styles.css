@@ -27,11 +27,13 @@ button {
     cursor: pointer;
 }
 
-table, td {
+table,
+td {
     border: 1px solid #333;
 }
 
-thead, tfoot {
+thead,
+tfoot {
     background-color: #333;
     color: #fff;
 }

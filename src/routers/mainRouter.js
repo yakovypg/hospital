@@ -21,16 +21,15 @@ mainRouter.post('/login', (req, res) => {
     const { email, password } = req.body;
 
     if (email === 'admin@gmail.com' && password === 'admin') {
-      req.session.isAuth = true;
-      req.session.isAdmin = true;
+        req.session.isAuth = true;
+        req.session.isAdmin = true;
 
-      return res.redirect("/admin");
-    }
-    else if (email === 'user@gmail.com' && password === 'user') {
-      req.session.isAuth = true;
-      req.session.isAdmin = false;
+        return res.redirect('/admin');
+    } else if (email === 'user@gmail.com' && password === 'user') {
+        req.session.isAuth = true;
+        req.session.isAdmin = false;
 
-      return res.redirect("/home");
+        return res.redirect('/home');
     }
 
     req.session.loginError = 'Invalid Credentials';
@@ -44,7 +43,7 @@ mainRouter.post('/logout', (req, res) => {
     delete req.session.loginError;
     delete req.session.adminError;
     delete req.session.userError;
-    
+
     return res.redirect('/login');
 });
 

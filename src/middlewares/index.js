@@ -7,7 +7,7 @@ const session = require('express-session');
 const { PORT } = require('../config');
 
 module.exports = app => {
-    app.set("view engine", "ejs");
+    app.set('view engine', 'ejs');
     app.set('views', path.join(__dirname, '../views'));
 
     app.use(express.json());
@@ -17,15 +17,15 @@ module.exports = app => {
     app.use(
         cors({
             origin: `http://localhost:${PORT}`,
-            credentials: true
-        })
+            credentials: true,
+        }),
     );
 
     app.use(
         session({
-            secret: "secret",
+            secret: 'secret',
             resave: false,
-            saveUninitialized: false
-        })
+            saveUninitialized: false,
+        }),
     );
 };

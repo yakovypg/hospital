@@ -7,5 +7,5 @@ module.exports = {
     addAppointment,
     addPost,
     deleteAppointment,
-    getFreeSlots
+    getFreeSlots,
 };

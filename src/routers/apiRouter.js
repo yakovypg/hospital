@@ -8,7 +8,7 @@ const isFreeSlotsSynchronized = require('../middlewares/isFreeSlotsSynchronized'
 const apiRouter = new express.Router();
 
 apiRouter.post('/posts', isAdmin, api.addPost);
-apiRouter.delete('/appointments/:id'/*, isAdmin*/, api.deleteAppointment);
+apiRouter.delete('/appointments/:id' /*, isAdmin*/, api.deleteAppointment);
 apiRouter.post('/appointments', isAuth, api.addAppointment);
 apiRouter.get('/appointments', isAuth, api.getFreeSlots);
 

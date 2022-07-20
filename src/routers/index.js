@@ -3,5 +3,5 @@ const apiRouter = require('./apiRouter');
 
 module.exports = {
     mainRouter,
-    apiRouter
+    apiRouter,
 };
