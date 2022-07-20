@@ -5,9 +5,12 @@ module.exports = async (req, res) => {
     
     try {
         const appointment = await db.query('DELETE FROM Appointment WHERE Id = $1', [id]);
+        delete req.session.adminError;
+        
         return res.json(Boolean(appointment.rowCount));
     }
     catch (err) {
-        return res.json({ error: err.message });
+        req.session.adminError = err.message;
+        return res.redirect('/admin');
     }
 };

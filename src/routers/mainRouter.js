@@ -1,22 +1,20 @@
 const express = require('express');
 
-const axios = require('axios');
-
 const isAuth = require('../middlewares/isAuth');
 const isAdmin = require('../middlewares/isAdmin');
 
 const mainRouter = new express.Router();
 
 mainRouter.get('/home', isAuth, (req, res) => {
-    res.render('home');
+    res.render('home', { error: req.session.userError });
 });
 
 mainRouter.get('/admin', isAdmin, (req, res) => {
-    res.render('admin');
+    res.render('admin', { error: req.session.adminError });
 });
 
 mainRouter.get('/login', (req, res) => {
-    res.render('login', { error: req.session.error });
+    res.render('login', { error: req.session.loginError });
 });
 
 mainRouter.post('/login', (req, res) => {
@@ -35,16 +33,19 @@ mainRouter.post('/login', (req, res) => {
       return res.redirect("/home");
     }
 
-    req.session.error = "Invalid Credentials";
-    return res.redirect("/login");
+    req.session.loginError = 'Invalid Credentials';
+    return res.redirect('/login');
 });
 
 mainRouter.post('/logout', (req, res) => {
     req.session.isAdmin = false;
     req.session.isAuth = false;
-    delete req.session.error;
+
+    delete req.session.loginError;
+    delete req.session.adminError;
+    delete req.session.userError;
     
-    return res.redirect("/login");
+    return res.redirect('/login');
 });
 
 mainRouter.use((req, res) => {

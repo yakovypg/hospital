@@ -11,9 +11,11 @@ module.exports = async (req, res) => {
         const values = [patientId, postId];
         const newAppointment = await db.query('INSERT INTO Appointment (Patient_Id, Post_Id) VALUES ($1, $2) RETURNING *', values);
         
-        return res.json(newAppointment.rows);
+        delete req.session.userError;
+        return res.redirect('/home');
     }
     catch (err) {
-        return res.json({ error: err.message });
+        req.session.userError = err.message;
+        return res.redirect('/home');
     }
 };

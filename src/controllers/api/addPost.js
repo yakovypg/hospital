@@ -6,9 +6,12 @@ module.exports = async (req, res) => {
 
     try {
         const newPost = await db.query('INSERT INTO Post (Doctor_Id, Office, AppointmentTime) VALUES ($1, $2, $3) RETURNING *', values);
-        return res.json(newPost.rows);
+        delete req.session.adminError;
+        
+        return res.redirect('/admin');
     }
     catch (err) {
-        return res.json({ error: err.message });
+        req.session.adminError = err.message;
+        return res.redirect('/admin');
     }
 };
