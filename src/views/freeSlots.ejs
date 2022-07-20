@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <h3>Cells Overview</h3>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2">Free slots</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if(freeSlots) { %>
+                <% for (let i = 0; i < freeSlots.length; ++i) { %>
+                    <th colspan="2">Slot <%=i+1%></th>
+                    <tr>
+                        <td>ID</td>
+                        <td><%=freeSlots[i].id%></td>
+                    </tr>
+                    <tr>
+                        <td>Doctor ID</td>
+                        <td><%=freeSlots[i].doctorid%></td>
+                    </tr>
+                    <tr>
+                        <td>Office</td>
+                        <td><%=freeSlots[i].office%></td>
+                    </tr>
+                    <tr>
+                        <td>Appointment time</td>
+                        <td><%=freeSlots[i].appointmenttime%></td>
+                    </tr>
+                <% } %>
+            <% } %>
+        </tbody>
+    </table>
+  </body>
+</html>

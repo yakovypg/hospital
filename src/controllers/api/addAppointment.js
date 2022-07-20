@@ -9,7 +9,7 @@ module.exports = async (req, res) => {
         const patientId = patientIdObj.rows[0].get_patient; 
 
         const values = [patientId, postId];
-        const newAppointment = await db.query('INSERT INTO Appointment (Patient_Id, Post_Id) VALUES ($1, $2) RETURNING *', values);
+        const newAppointment = await db.query('INSERT INTO Appointment (PatientId, PostId) VALUES ($1, $2) RETURNING *', values);
         
         delete req.session.userError;
         return res.redirect('/home');

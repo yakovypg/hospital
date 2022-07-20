@@ -5,7 +5,7 @@ module.exports = async (req, res) => {
     const values = [doctorId, office, appointmentTime];
 
     try {
-        const newPost = await db.query('INSERT INTO Post (Doctor_Id, Office, AppointmentTime) VALUES ($1, $2, $3) RETURNING *', values);
+        const newPost = await db.query('INSERT INTO Post (DoctorId, Office, AppointmentTime) VALUES ($1, $2, $3) RETURNING *', values);
         delete req.session.adminError;
         
         return res.redirect('/admin');

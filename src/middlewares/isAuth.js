@@ -3,7 +3,7 @@ module.exports = (req, res, next) => {
 		next();
 	}
 	else {
-		req.session.error = "You have to Login first";
+		req.session.loginError = "You have to Login first";
 		res.redirect("/login");
 	}
 };

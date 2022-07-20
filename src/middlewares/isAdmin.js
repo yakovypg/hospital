@@ -3,7 +3,7 @@ module.exports = (req, res, next) => {
         next();
     }
     else {
-        req.session.error = "You do not have access to this page";
+        req.session.loginError = "You do not have access to this page";
         res.redirect("/login");
     }
 };
