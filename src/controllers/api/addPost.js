@@ -9,8 +9,8 @@ module.exports = async (req, res) => {
             'INSERT INTO Post (DoctorId, Office, AppointmentTime) VALUES ($1, $2, $3) RETURNING *',
             values,
         );
-        delete req.session.adminError;
 
+        delete req.session.adminError;
         return res.redirect('/admin');
     } catch (err) {
         req.session.adminError = err.message;
